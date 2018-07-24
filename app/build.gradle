@@ -15,6 +15,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        buildConfigField 'String', 'API_URL', "\"https://private-4d5b7-kajian.apiary-mock.com/\""
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -59,10 +60,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
 
-
-    // dagger
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    // koin
+    implementation "org.koin:koin-android-architecture:$rootProject.koinVersion"
 
     // testing
     testImplementation "junit:junit:$rootProject.junitVersion"

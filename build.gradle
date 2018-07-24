@@ -24,7 +24,7 @@ ext {
     rxandroidVersion = '2.0.2'
     rxKotlinVersion = '2.2.0'
     dataBindingCompilerVersion = '2.3.0'
-    daggerVersion = '2.14.1'
+    koinVersion = '0.9.1'
 }
 
 
