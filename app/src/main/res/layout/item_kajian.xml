@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
+    android:layout_height="wrap_content">
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:padding="12dp"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivThumbnail"
+            android:layout_width="100dp"
+            android:layout_height="120dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/TextParagraph2.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/ivThumbnail"
+            tools:text="Dosa Besar 13 Kesaksian Palsu" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvUstadz"
+            style="@style/TextParagraph3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
+            tools:text="Ustadz Khalid Basalamah" />
 
 
-    </android.support.design.widget.CoordinatorLayout>
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvPlace"
+            style="@style/TextParagraph3.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
+            tools:text="Masjid At-Taqwa Rawalumbu, Bekasi" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

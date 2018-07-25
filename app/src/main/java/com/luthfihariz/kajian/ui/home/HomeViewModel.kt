@@ -4,7 +4,6 @@ import android.app.job.JobInfo
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.helpster.staff.common.rx.SchedulerProvider
-import com.luthfihariz.kajian.common.extension.asResource
 import com.luthfihariz.kajian.data.Resource
 import com.luthfihariz.kajian.data.model.Kajian
 import com.luthfihariz.kajian.data.repository.KajianRepository
@@ -20,7 +19,14 @@ class HomeViewModel(repository: KajianRepository, scheduler:  SchedulerProvider)
         repository.getListOfKajian()
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
-                .asResource()
+                .subscribeBy(
+                        onNext = {
+                            listOfKajianResource.postValue(Resource.success(it))
+                        },
+                        onError = {
+                            listOfKajianResource.postValue(Resource.error(it.message))
+                        }
+                )
     }
 
 }

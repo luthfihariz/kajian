@@ -2,7 +2,12 @@ package com.luthfihariz.kajian.ui.home
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import com.luthfihariz.kajian.R
+import com.luthfihariz.kajian.common.extension.gone
+import com.luthfihariz.kajian.common.extension.visible
 import com.luthfihariz.kajian.data.Resource
 import com.luthfihariz.kajian.data.Status
 import com.luthfihariz.kajian.data.model.Kajian
@@ -18,16 +23,27 @@ class HomeActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
+        setupRecyclerView()
         viewModel.listOfKajianResource.observe(this, Observer<Resource<List<Kajian>>> { t -> observer(t) })
+    }
+
+    private fun setupRecyclerView(){
+        rvListOfKajian.layoutManager = LinearLayoutManager(this)
+        rvListOfKajian.adapter = HomeAdapter()
     }
 
     private fun observer(value: Resource<List<Kajian>>?) {
         when(value?.status){
-            Status.LOADING -> {}
-            Status.ERROR -> {}
+            Status.LOADING -> {
+                pbLoading.visible()
+            }
+            Status.ERROR -> {
+                pbLoading.gone()
+                Toast.makeText(this, value.error, Toast.LENGTH_LONG).show()
+            }
             Status.SUCCESS -> {
-                tvResponse.text = value.data.toString()
+                pbLoading.gone()
+                (rvListOfKajian.adapter as HomeAdapter).update(value.data)
             }
         }
     }
