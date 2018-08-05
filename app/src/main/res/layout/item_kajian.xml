@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="8dp"
-    app:cardElevation="0dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="12dp"
+        android:padding="8dp"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.AppCompatImageView
@@ -26,16 +26,26 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toRightOf="@+id/ivThumbnail"
-            tools:text="Dosa Besar 13 Kesaksian Palsu" />
+            tools:text="Dosa Besar 13 Kesaksian Palsu"
+            android:layout_marginStart="8dp" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tvUstadz"
             style="@style/TextParagraph3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tvPlace"
+            app:layout_constraintLeft_toLeftOf="@+id/tvPlace"
+            tools:text="Ustadz Khalid Basalamah" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvStartDate"
+            style="@style/TextParagraph5.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
             app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
-            tools:text="Ustadz Khalid Basalamah" />
+            tools:text="Sabtu, 4 Agustus 2018 09.00" />
 
 
         <android.support.v7.widget.AppCompatTextView
@@ -46,6 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
             tools:text="Masjid At-Taqwa Rawalumbu, Bekasi" />
+
 
     </android.support.constraint.ConstraintLayout>
 

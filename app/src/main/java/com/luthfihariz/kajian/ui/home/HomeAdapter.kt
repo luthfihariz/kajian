@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.luthfihariz.kajian.R
+import com.luthfihariz.kajian.common.extension.formatTimestamp
 import com.luthfihariz.kajian.data.model.Kajian
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_kajian.view.*
 
-class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     var listOfKajian : List<Kajian> = ArrayList()
 
@@ -34,7 +36,11 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         fun bind(kajian: Kajian) {
             view.tvTitle.text =  kajian.title
             view.tvUstadz.text = kajian.ustadz
+            view.tvStartDate.text = kajian.startDate.formatTimestamp("dd MMMM yyyy hh:mm")
             view.tvPlace.text = kajian.place + " " + kajian.city
+            if(kajian.main_images.isNotEmpty()){
+                Picasso.get().load(kajian.main_images).into(view.ivThumbnail)
+            }
         }
     }
 }

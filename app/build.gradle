@@ -67,4 +67,7 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+    // picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 }

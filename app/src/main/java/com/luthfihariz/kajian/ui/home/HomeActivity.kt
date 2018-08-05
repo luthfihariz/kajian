@@ -13,6 +13,7 @@ import com.luthfihariz.kajian.data.Status
 import com.luthfihariz.kajian.data.model.Kajian
 import com.luthfihariz.kajian.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 import org.koin.android.architecture.ext.viewModel
 
 class HomeActivity : BaseActivity(){
@@ -24,7 +25,15 @@ class HomeActivity : BaseActivity(){
         setContentView(R.layout.activity_home)
 
         setupRecyclerView()
+        setupToolbar()
         viewModel.listOfKajianResource.observe(this, Observer<Resource<List<Kajian>>> { t -> observer(t) })
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.let {
+            it.title = "Jadwal Kajian"
+        }
     }
 
     private fun setupRecyclerView(){

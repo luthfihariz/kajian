@@ -11,4 +11,5 @@ data class Kajian (val id : Int,
                    val place : String,
                    val city: String,
                    val ustadz : String,
+                   @SerializedName("start_date") val startDate: Long,
                    @SerializedName("full_address") val fullAddress : String )
